@@ -4,6 +4,7 @@ namespace Spatie\Analytics;
 
 use DateTimeInterface;
 use Google_Service_Analytics;
+use Google_Service_Analytics_GaData;
 use Illuminate\Contracts\Cache\Repository;
 
 class AnalyticsClient
@@ -42,7 +43,7 @@ class AnalyticsClient
      *
      * @return array|null
      */
-    public function performQuery(string $viewId, DateTimeInterface $startDate, DateTimeInterface $endDate, string $metrics, array $others = []): array | null
+    public function performQuery(string $viewId, DateTimeInterface $startDate, DateTimeInterface $endDate, string $metrics, array $others = []): array | Google_Service_Analytics_GaData | null
     {
         $cacheName = $this->determineCacheName(func_get_args());
 
